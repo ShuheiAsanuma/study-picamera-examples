@@ -36,13 +36,13 @@ class FaceDetector(object):
         # detectMultiScaleメソッドで処理し、認識した顔の座標情報を取得する
         faces = self.face_cascade.detectMultiScale(gray, 1.3, 3)
         font = cv2.FONT_HERSHEY_SIMPLEX
-        face_count = len(faces)
+        face_count = str(len(faces))
+        cv2.putText(frame, face_count,(10,500), font, 4,(0,0,255))
 
         # 取得した座標情報を元に、cv2.rectangleを使ってframe上に
         # 顔の位置を描画する
         for (x,y,w,h) in faces:
-            # cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
-            cv2.putText(frame, print(faces),(10,500), font, 4,(0,0,255))
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
 
         # frameを戻り値として返す
         return frame
